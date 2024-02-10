@@ -5,7 +5,20 @@
 */
 
 function isAnagram(str1, str2) {
-
+  firstWord = str1.toLowerCase().split('').sort();
+  secondWord = str2.toLowerCase().split('').sort();
+  let isAnagram = true;
+  if(firstWord.length!=secondWord.length){
+    isAnagram = false;
+  }else{
+    for(let i =0 ; i < firstWord.length ; i++){
+      if(firstWord[i]!=secondWord[i]){
+        isAnagram = false;
+        break;
+      }
+    }
+  }
+  return isAnagram;
 }
 
 module.exports = isAnagram;
