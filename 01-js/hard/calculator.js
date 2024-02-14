@@ -16,6 +16,46 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+class Calculator {
+  constructor(){
+    this.result = 0;
+  }
+  add(n){
+    this.result += n;
+  }
+  subtract(n){
+    this.result -= n;
+  }
+  divide(n){
+    if(n == 0){
+      throw new Error("cannot divide by zero")
+    }
+    this.result /= n;
+  }
+  multiply(n){
+    this.result *= n;
+  }
+  getResult(){
+    // console.log(`the result is ${this.result}`);
+    return this.result;
+  }
+  clear(){
+    this.result = 0;
+  }
+  calculate(exp){
+    exp = exp.replace(/\s+/g, "");
+    if(/[a-zA-Z]/.test(exp)){
+      throw new Error("expression contains non-numerical characters");
+    }
+    for(let i = 0; i<exp.length; i++){
+      if(exp[i] == 0){
+        if(exp[i-1] == '/'){
+          throw new Error("cannot divide by zero")
+        }
+      }
+    }
+    this.result = eval(exp);
+  }
+}
 
 module.exports = Calculator;
