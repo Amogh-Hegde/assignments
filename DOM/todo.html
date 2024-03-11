@@ -1,0 +1,37 @@
+<html>
+    <body>
+        <div>
+        <input id="title" type="text"><br><br>
+        <input id="description" type="text"><br><br>
+        <button onclick="addTodo()">add todo</button>
+        </div>
+        <div id="container"></div>
+    </body>
+    <script>
+        let globalId = 0;
+        function updateDom(state){
+
+        }
+        function createTodo(title,description,id){
+            const child = document.createElement("div");
+            document.getElementById("container").appendChild(child);
+            const grandchild1 = document.createElement("div");
+            const grandchild2 = document.createElement("div");
+            const grandchild3 = document.createElement("button");
+            child.appendChild(grandchild1);
+            child.appendChild(grandchild2);
+            child.appendChild(grandchild3);
+            grandchild3.innerHTML = "mark as done";
+            grandchild1.innerHTML = `${title}`;
+            grandchild2.innerHTML =`${description}`;
+            child.setAttribute("id",id);
+            grandchild3.setAttribute("onclick",`markTodo(${id})`);
+            
+        }
+        function markTodo(id){
+            const toBeChanged = document.getElementById(id);
+            toBeChanged.children[2].innerHTML="done";
+        }
+
+    </script>
+</html>
