@@ -51,7 +51,7 @@ describe('Todo Operations', () => {
       const title = 'Test Todo';
       const description = 'Test Description';
       const todo = await createTodo(userId, title, description);
-  
+      
       expect(todo).toHaveProperty('id');
       expect(todo.title).toEqual(title);
       expect(todo.description).toEqual(description);
@@ -65,13 +65,14 @@ describe('Todo Operations', () => {
       const updatedTodo = await updateTodo(todoId);
       expect(updatedTodo.done).toEqual(true);
     });
+    
   
     test('getTodos retrieves all todos for a user', async () => {
       // Assuming there are already todos created in previous tests
-      const todos = await getTodos(userId);
+      const todos : any = await getTodos(userId);
   
       expect(todos.length).toBeGreaterThan(0);
-      todos.forEach(todo => {
+      todos.forEach((todo : any) => {
         expect(todo).toHaveProperty('id');
         expect(todo.user_id).toEqual(userId);
       });
